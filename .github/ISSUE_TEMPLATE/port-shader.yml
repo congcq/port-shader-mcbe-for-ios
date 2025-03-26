@@ -1,0 +1,17 @@
+name: Request
+description: Request shader which you want to port
+title: "[Shader pack] "
+label: ["port"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please be sure to include a directly downloadable link to your shader pack. The action will fail if the shader pack cannot be downloaded.
+  - type: input
+    id: shader-pack-direct-download-url
+    attributes:
+      label: Shader Pack Direct Download URL
+      description: Please provide a direct link to the MCBE shader pack to be ported.
+      placeholder: https://mediafile.com/*/*.zip or .mcpack
+    validations:
+      required: true
