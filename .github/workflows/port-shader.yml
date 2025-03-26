@@ -1,7 +1,7 @@
 name: Shader Port
 on:
   issues:
-    types: [opened, reopened, labeled]
+    types: labeled
 
 jobs:
   get-pack-info:
