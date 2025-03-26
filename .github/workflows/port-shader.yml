@@ -63,7 +63,7 @@ jobs:
           path: ported
   post-result:
     runs-on: ubuntu-latest
-    needs: convert-pack
+    needs: port-shader
     timeout-minutes: 2
     permissions: 
       issues: write
