@@ -1,7 +1,7 @@
 name: Request
 description: Request shader which you want to port
 title: "[Shader pack] "
-label: ["port"]
+labels: ["port"]
 body:
   - type: markdown
     attributes:
