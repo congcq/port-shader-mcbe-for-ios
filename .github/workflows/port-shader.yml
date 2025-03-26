@@ -53,8 +53,8 @@ jobs:
           PACK_URL: ${{ needs.get-pack-info.outputs.pack_url }}
 
         run: |
-          ls
-          ./material-updater -t v1-21-20 -o ported.zip "${PACK_URL}"
+          curl --no-styled-output-#L -o input_pack.zip
+          ./material-updater -t v1-21-20 -o ported.zip input_pack.zip
           zip -T ported.zip
           ls
       - name: Upload ported shader pack
@@ -77,18 +77,16 @@ jobs:
           body: |
             ## :sparkles: The run has finished! :sparkles:
             - Download the pack files from the [action run][1] page. :arrow_double_down:
-            - Upload the resource pack `geyser_resources.mcpack` to the `packs` folder of your Geyser folder. :file_folder:
-            - Upload the mappings file `geyser_mappings.json` to the `custom_mappings` folder of your Geyser folder. :page_with_curl:
 
-            If you notice issues with the converted files, please refer to the action log for errors and open a bug report if you believe there is an issue with the converter. This issue will be closed automatically.
+            If you notice issues with the ported files, please refer to the action log for errors and open a bug report if you believe there is an issue with the porter. This issue will be closed automatically.
 
-            [1]: https://github.com/Kas-tle/java2bedrock.sh/actions/runs/${{ github.run_id}}
+            [1]: https://github.com/congcq/port-shader-mcbe-for-ios/actions/runs/${{ github.run_id}}
           reactions: 'rocket'
       - name: Close Issue
         uses: peter-evans/close-issue@v2
         with:
           issue-number: ${{ github.event.issue.number }}
-  conversion-failed:
+  port-failed:
     runs-on: ubuntu-latest
     needs: [get-pack-info, port-shader, post-result]
     if: always() && (needs.get-pack-info.result == 'failure' || needs.port-shader.result == 'failure' || needs.port-shader.result == 'post-result')
@@ -109,9 +107,9 @@ jobs:
               - Ported Shader Pack: *${{ needs.port-shader.result }}*
               - Post Result: *${{ needs.post-result.result }}*
 
-            If you believe this is an issue with the converter. please open a bug report. This issue will be closed automatically.
+            If you believe this is an issue with the porter. please open a bug report. This issue will be closed automatically.
 
-            [1]: https://github.com/Kas-tle/java2bedrock.sh/actions/runs/${{ github.run_id}}
+            [1]: https://github.com/congcq/port-shader-mcbe-for-ios/actions/runs/${{ github.run_id}}
           reactions: 'x'
       - name: Close Issue
         uses: peter-evans/close-issue@v2
