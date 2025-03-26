@@ -53,7 +53,7 @@ jobs:
           PACK_URL: ${{ needs.get-pack-info.outputs.pack_url }}
 
         run: |
-          curl --no-styled-output-#L -o input_pack.zip
+          curl --no-styled-output -#L -o input_pack.zip
           ./material-updater -t v1-21-20 -o ported.zip input_pack.zip
           zip -T ported.zip
           ls
