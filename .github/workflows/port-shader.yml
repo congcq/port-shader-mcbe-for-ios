@@ -1,4 +1,4 @@
-name: Port shader
+name: Port Shader
 
 on:
   issues:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Get issue information
         uses: github.actions/issue@v1
@@ -18,12 +18,13 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
 
       - name: Download file from issue
-        uses: github.actions/download-artifact@v1
+        uses: actions/download-artifact@v2
         with:
           name: file-from-issue
-          path: ${{ steps.issue.outputs.file-path }}
+          path: ${{ github.event.issue.body }}
 
       - name: Use file from issue
         run: |
           # Sử dụng file từ issue tại đây
-          echo "File từ issue: ${{ steps.issue.outputs.file-path }}"
+          cd ${{ steps.issue.outputs.file-path }}"
+          ls
