@@ -12,6 +12,6 @@ body:
     attributes:
       label: Shader Pack Direct Download URL
       description: Please provide a direct link to the MCBE shader pack to be ported.
-      placeholder: https://mediafile.com/*/*.zip or .mcpack
+      placeholder: link here
     validations:
       required: true
